@@ -4,6 +4,8 @@ elrond_wasm::imports!();
 
 pub mod custom_types;
 
+
+
 use crate::custom_types::*;
 
 pub mod frozen_state;
