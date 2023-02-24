@@ -1,0 +1,30 @@
+{
+    "name": "Set addresses list",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "1",
+                    "balance": "100000000000000000000",
+                    "esdt": {"str:MEX-dc289c":"4000000000000000000000000"}
+                },
+                "address:operator": {
+                    "nonce": "1",
+                    "balance": "0"
+                },
+                "address:NOoperator": {
+                    "nonce": "1",
+                    "balance": "0"
+                }
+            },
+            "newAddresses": [
+                {
+                    "creatorAddress": "address:owner",
+                    "creatorNonce": "1",
+                    "newAddress": "sc:vesting"
+                }
+            ]
+        }
+    ]
+}

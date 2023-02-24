@@ -1,0 +1,389 @@
+{
+    "buildInfo": {
+        "rustc": {
+            "version": "1.67.0-nightly",
+            "commitHash": "77e57db384aca99444c3b5f6a9c86bc58a804d89",
+            "commitDate": "2022-10-30",
+            "channel": "Nightly",
+            "short": "rustc 1.67.0-nightly (77e57db38 2022-10-30)"
+        },
+        "contractCrate": {
+            "name": "vesting",
+            "version": "0.0.1"
+        },
+        "framework": {
+            "name": "elrond-wasm",
+            "version": "0.36.1"
+        }
+    },
+    "name": "Vesting",
+    "constructor": {
+        "inputs": [
+            {
+                "name": "vested_token",
+                "type": "EgldOrEsdtTokenIdentifier"
+            }
+        ],
+        "outputs": []
+    },
+    "endpoints": [
+        {
+            "name": "set_listing_epoch",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "new_epoch",
+                    "type": "u64"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "set_vested_token",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "vested_token",
+                    "type": "EgldOrEsdtTokenIdentifier"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "configure_category",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "categories_list",
+                    "type": "variadic<multi<bytes,u64,u64,u32>>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "remove_category",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "category",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "set_address_balance",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "category",
+                    "type": "bytes"
+                },
+                {
+                    "name": "addresses_list",
+                    "type": "variadic<multi<Address,BigUint>>",
+                    "multi_arg": true
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "remove_address_from_category",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "category",
+                    "type": "bytes"
+                },
+                {
+                    "name": "address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "add_funds",
+            "mutability": "mutable",
+            "payableInTokens": [
+                "*"
+            ],
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "claim",
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "get_address_balance",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "TotalAddressBalance"
+                }
+            ]
+        },
+        {
+            "name": "get_category_address_list_with_balance",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "category_name",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<multi<Address,AddressBalance>>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "get_count_addresses",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u32"
+                }
+            ]
+        },
+        {
+            "name": "get_listing_epoch",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "u64"
+                }
+            ]
+        },
+        {
+            "name": "get_vested_token",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "EgldOrEsdtTokenIdentifier"
+                }
+            ]
+        },
+        {
+            "name": "get_categories",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "variadic<multi<bytes,CategoryType>>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "get_unlock_data_list",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "category",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "List<UnlockData>"
+                }
+            ]
+        },
+        {
+            "name": "get_category_addresses",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "category",
+                    "type": "bytes"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "variadic<Address>",
+                    "multi_result": true
+                }
+            ]
+        },
+        {
+            "name": "get_category_address_balance",
+            "mutability": "readonly",
+            "inputs": [
+                {
+                    "name": "category",
+                    "type": "bytes"
+                },
+                {
+                    "name": "address",
+                    "type": "Address"
+                }
+            ],
+            "outputs": [
+                {
+                    "type": "AddressBalance"
+                }
+            ]
+        },
+        {
+            "name": "get_total_vested_supply",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "BigUint"
+                }
+            ]
+        },
+        {
+            "name": "get_operator_address",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "Address"
+                }
+            ]
+        },
+        {
+            "name": "set_operator_address",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [
+                {
+                    "name": "new_operator",
+                    "type": "Address"
+                }
+            ],
+            "outputs": []
+        },
+        {
+            "name": "clear_operator_address",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "frozen",
+            "mutability": "readonly",
+            "inputs": [],
+            "outputs": [
+                {
+                    "type": "State"
+                }
+            ]
+        },
+        {
+            "name": "freeze_sc",
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        },
+        {
+            "name": "unfreeze_sc",
+            "onlyOwner": true,
+            "mutability": "mutable",
+            "inputs": [],
+            "outputs": []
+        }
+    ],
+    "events": [],
+    "hasCallback": false,
+    "types": {
+        "AddressBalance": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "initial_amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "claimed_amount",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        "CategoryType": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "unlock_epoch",
+                    "type": "u64"
+                },
+                {
+                    "name": "period",
+                    "type": "u64"
+                },
+                {
+                    "name": "percent",
+                    "type": "u32"
+                }
+            ]
+        },
+        "State": {
+            "type": "enum",
+            "variants": [
+                {
+                    "name": "Unfrozen",
+                    "discriminant": 0
+                },
+                {
+                    "name": "Frozen",
+                    "discriminant": 1
+                }
+            ]
+        },
+        "TotalAddressBalance": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "initial_amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "unlocked_amount",
+                    "type": "BigUint"
+                },
+                {
+                    "name": "claimed_amount",
+                    "type": "BigUint"
+                }
+            ]
+        },
+        "UnlockData": {
+            "type": "struct",
+            "fields": [
+                {
+                    "name": "epoch",
+                    "type": "u64"
+                },
+                {
+                    "name": "percent",
+                    "type": "u32"
+                }
+            ]
+        }
+    }
+}

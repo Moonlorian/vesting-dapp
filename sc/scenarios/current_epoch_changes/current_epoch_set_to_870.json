@@ -1,0 +1,12 @@
+{
+    "name": "Set current epoch to 510",
+    "steps": [
+        {
+            "step": "setState",
+            "comment": "Set current epoch to 870",
+            "currentBlockInfo": {
+                "blockEpoch": "870"
+            }
+        }
+    ]
+}

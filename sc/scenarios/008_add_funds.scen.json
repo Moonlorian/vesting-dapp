@@ -1,0 +1,35 @@
+{
+    "name": "Add funds",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "006_A_wallet_add_to_category.scen.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "Add funds",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "esdtValue": [
+                    {
+                        "tokenIdentifier": "str:MEX-dc289c",
+                        "value": "4000000000000000000000000"
+                    }
+                ],
+                "function": "add_funds",
+                "arguments": [],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        }
+    ]
+}

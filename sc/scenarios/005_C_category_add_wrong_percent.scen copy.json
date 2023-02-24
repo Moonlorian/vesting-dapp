@@ -1,0 +1,56 @@
+{
+    "name": "Add worng percent",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "004_vested_token_set_vested_token.scen.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "Ad a percent greater than 100",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "configure_category",
+                "arguments": ["str:CATEGORY_90_5000", "360", "90", "10001", "str:CATEGORY_10_2500", "360", "10", "2500", "str:CATEGORY_5_10000", "360", "5", "10000", "str:CATEGORY_10_10000", "360", "10", "10000", "str:CATEGORY_0_10000", "360", "0", "10000", "str:CATEGORY_20_10000", "360", "20", "10000"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "4",
+                "message": "str:Unlock percent cannot be greater than 100%",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "checkState",
+            "comment": "Check that new categories where saved",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "9",
+                    "balance": "100000000000000000000",
+                    "esdt": {"str:MEX-dc289c":"4000000000000000000000000"}
+                },
+                "address:operator": {
+                    "nonce": "2",
+                    "balance": "0"
+                },
+                "address:NOoperator": {
+                    "nonce": "3",
+                    "balance": "0"
+                },
+                "sc:vesting": {
+                    "storage": {
+                        "str:listing_epoch":"510",
+                        "str:vested_token":"str:MEX-dc289c",
+                        "str:operator":"address:operator"
+                    },
+                    "code": "file:../output/vesting.wasm"
+                }
+            }
+        }
+    ]
+}

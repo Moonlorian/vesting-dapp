@@ -1,0 +1,31 @@
+{
+    "name": "contract deploy",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "wallets/base_wallets.json"
+        },
+        {
+            "step": "scDeploy",
+            "id": "deploy",
+            "tx": {
+                "from": "address:owner",
+                "contractCode": "file:../output/vesting.wasm",
+                "arguments": ["str:MEX-dc289c"],
+                "gasLimit": "15,00,00,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "logs": [],
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "externalSteps",
+            "path": "current_epoch_changes/current_epoch_set_to_500.json"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Set addresses list",
+    "steps": [
+        {
+            "step": "setState",
+            "accounts": {
+                "address:wallet2": {
+                    "nonce": "1",
+                    "balance": "100000000000000000000"
+                }
+            }
+        }
+    ]
+}

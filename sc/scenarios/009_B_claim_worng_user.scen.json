@@ -1,0 +1,37 @@
+{
+    "name": "Claim",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "008_add_funds.scen.json"
+        },
+        {
+            "step": "externalSteps",
+            "path": "current_epoch_changes/current_epoch_set_to_870.json"
+        },
+        {
+            "step": "externalSteps",
+            "path": "wallets/wallet2.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "claim from wrong user",
+            "tx": {
+                "from": "address:wallet2",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "claim",
+                "arguments": [],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "4",
+                "message": "str:Nothing to claim",
+                "gas": "*",
+                "refund": "*"
+            }
+        }
+    ]
+}

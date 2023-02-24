@@ -1,0 +1,100 @@
+{
+    "name": "Set listing epoch",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "002_operator_set_new_operator.scen.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "set right listing epoch",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_listing_epoch",
+                "arguments": ["u64:510"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "scCall",
+            "txId": "Set listing epoch from no owner",
+            "tx": {
+                "from": "address:NOoperator",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_listing_epoch",
+                "arguments": ["u64:510"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "4",
+                "message": "str:Endpoint can only be called by owner",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "checkState",
+            "comment": "check that previous tx did the right thing",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "4",
+                    "balance": "100000000000000000000",
+                    "esdt": {"str:MEX-dc289c":"4000000000000000000000000"}
+                },
+                "address:operator": {
+                    "nonce": "2",
+                    "balance": "0"
+                },
+                "address:NOoperator": {
+                    "nonce": "2",
+                    "balance": "0"
+                },
+                "sc:vesting": {
+                    "storage": {
+                        "str:listing_epoch":"510",
+                        "str:vested_token":"str:MEX-dc289c",
+                        "str:operator":"address:operator"
+                    },
+                    "code": "file:../output/vesting.wasm"
+                }
+            }
+        },
+        {
+            "step": "externalSteps",
+            "path": "current_epoch_changes/current_epoch_set_to_520.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "Try to change listing epoch when has passed",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_listing_epoch",
+                "arguments": ["u64:600"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "4",
+                "message": "str:Listing epoch has passed, operation not allowed.",
+                "gas": "*",
+                "refund": "*"
+            }
+        }
+    ]
+}

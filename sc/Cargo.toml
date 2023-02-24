@@ -1,0 +1,18 @@
+[package]
+name = "vesting"
+version = "0.0.1"
+authors = ["Pedro Carranza <pedro.carranza@moonlorian.com>"]
+edition = "2018"
+publish = false
+
+[lib]
+path = "src/vesting.rs"
+
+[dev-dependencies]
+num-bigint = "0.4.2"
+
+[dependencies.elrond-wasm]
+version = "0.36.1"
+
+[dev-dependencies.elrond-wasm-debug]
+version = "0.36.1"

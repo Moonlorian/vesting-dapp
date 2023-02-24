@@ -1,0 +1,49 @@
+{
+    "name": "Set operator",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "001_contract_deploy.scen.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "add_operator",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_operator_address",
+                "arguments": ["address:operator"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "scCall",
+            "txId": "add_operator",
+            "tx": {
+                "from": "address:operator",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_operator_address",
+                "arguments": ["address:operator"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "4",
+                "message": "str:Endpoint can only be called by owner",
+                "gas": "*",
+                "refund": "*"
+            }
+        }
+    ]
+}

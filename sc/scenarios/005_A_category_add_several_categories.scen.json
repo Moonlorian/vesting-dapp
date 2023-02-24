@@ -1,0 +1,95 @@
+{
+    "name": "Add a lot of categories in one time",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "004_vested_token_set_vested_token.scen.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "Add a lot of categories in one time",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "configure_category",
+                "arguments": ["str:CATEGORY_90_5000", "360", "90", "5000", "str:CATEGORY_10_2500", "360", "10", "2500", "str:CATEGORY_5_10000", "360", "5", "10000", "str:CATEGORY_10_10000", "360", "10", "10000", "str:CATEGORY_0_10000", "360", "0", "10000", "str:CATEGORY_20_10000", "360", "20", "10000"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "checkState",
+            "comment": "Check that new categories where saved",
+            "accounts": {
+                "address:owner": {
+                    "nonce": "9",
+                    "balance": "100000000000000000000",
+                    "esdt": {"str:MEX-dc289c":"4000000000000000000000000"}
+                },
+                "address:operator": {
+                    "nonce": "2",
+                    "balance": "0"
+                },
+                "address:NOoperator": {
+                    "nonce": "3",
+                    "balance": "0"
+                },
+                "sc:vesting": {
+                    "storage": {
+                        "str:categories.info":"u32:6|u32:1|u32:6|u32:6",
+
+                        "str:categories.node_id|nested:str:CATEGORY_90_5000":"u8:1",
+                        "str:categories.value|u32:1":"str:CATEGORY_90_5000",
+                        "str:categories.mapped|nested:str:CATEGORY_90_5000":"u64:360|u64:90|u32:5000",
+
+                        "str:categories.node_id|nested:str:CATEGORY_10_2500":"u8:2",
+                        "str:categories.value|u32:2":"str:CATEGORY_10_2500",                      
+                        "str:categories.mapped|nested:str:CATEGORY_10_2500":"u64:360|u64:10|u32:2500",
+
+                        "str:categories.node_id|nested:str:CATEGORY_5_10000":"u8:3",
+                        "str:categories.value|u32:3":"str:CATEGORY_5_10000",                      
+                        "str:categories.mapped|nested:str:CATEGORY_5_10000":"u64:360|u64:5|u32:10000",
+
+                        "str:categories.node_id|nested:str:CATEGORY_10_10000":"u8:4",
+                        "str:categories.value|u32:4":"str:CATEGORY_10_10000",                      
+                        "str:categories.mapped|nested:str:CATEGORY_10_10000":"u64:360|u64:10|u32:10000",
+                        
+                        "str:categories.node_id|nested:str:CATEGORY_0_10000":"u8:5",
+                        "str:categories.value|u32:5":"str:CATEGORY_0_10000",
+                        "str:categories.mapped|nested:str:CATEGORY_0_10000":"u64:360|u64:0|u32:10000",
+
+                        "str:categories.node_id|nested:str:CATEGORY_20_10000":"u8:6",
+                        "str:categories.value|u32:6":"str:CATEGORY_20_10000",
+                        "str:categories.mapped|nested:str:CATEGORY_20_10000":"u64:360|u64:20|u32:10000",
+
+                        "str:categories.node_links|u32:1":"u32:0|u32:2",
+                        "str:categories.node_links|u32:2":"u32:1|u32:3",
+                        "str:categories.node_links|u32:3":"u32:2|u32:4",
+                        "str:categories.node_links|u32:4":"u32:3|u32:5",
+                        "str:categories.node_links|u32:5":"u32:4|u32:6",
+                        "str:categories.node_links|u32:6":"u32:5|u32:0",
+
+                        "str:unlock_data_list|nested:str:CATEGORY_90_5000":"u64:0|u32:5000|u64:90|u32:5000",
+                        "str:unlock_data_list|nested:str:CATEGORY_10_2500":"u64:0|u32:2500|u64:10|u32:2500|u64:20|u32:2500|u64:30|u32:2500",
+                        "str:unlock_data_list|nested:str:CATEGORY_5_10000":"u64:0|u32:10000",
+                        "str:unlock_data_list|nested:str:CATEGORY_10_10000":"u64:0|u32:10000",
+                        "str:unlock_data_list|nested:str:CATEGORY_0_10000":"u64:0|u32:10000",
+                        "str:unlock_data_list|nested:str:CATEGORY_20_10000":"u64:0|u32:10000",
+                        "str:listing_epoch":"510",
+                        "str:vested_token":"str:MEX-dc289c",
+                        "str:operator":"address:operator"
+                    },
+                    "code": "file:../output/vesting.wasm"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,101 @@
+{
+    "name": "Set allowed token",
+    "steps": [
+        {
+            "step": "externalSteps",
+            "path": "003_set_listing_epoch.scen.json"
+        },
+        {
+            "step": "externalSteps",
+            "path": "current_epoch_changes/current_epoch_set_to_500.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "set_vested_token",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_vested_token",
+                "arguments": ["str:EGLD"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "scCall",
+            "txId": "change_vested_token",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_vested_token",
+                "arguments": ["str:MEX-dc289c"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "",
+                "message": "",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "scCall",
+            "txId": "set_vested_token_by_not_allowed_user",
+            "tx": {
+                "from": "address:NOoperator",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_vested_token",
+                "arguments": ["str:MEX-dc289c"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "4",
+                "message": "str:Endpoint can only be called by owner",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "externalSteps",
+            "path": "current_epoch_changes/current_epoch_set_to_520.json"
+        },
+        {
+            "step": "scCall",
+            "txId": "Try to change vested token when has passed",
+            "tx": {
+                "from": "address:owner",
+                "to": "sc:vesting",
+                "egldValue": "",
+                "function": "set_vested_token",
+                "arguments": ["str:MEX-dc289c"],
+                "gasLimit": "100,000,000",
+                "gasPrice": "0"
+            },
+            "expect": {
+                "out": [],
+                "status": "4",
+                "message": "str:Listing epoch has passed, operation not allowed.",
+                "gas": "*",
+                "refund": "*"
+            }
+        },
+        {
+            "step": "externalSteps",
+            "path": "current_epoch_changes/current_epoch_set_to_500.json"
+        }
+    ]
+}
