@@ -36,6 +36,12 @@ When you login with the administrator wallet, you can setup the Smart Contract:
   - Lock (cliff) in epochs
   - Percent to unlock every xx epochs
 
+> For example:
+> 
+> SEED category 3 month lock (90 epoch) + 25 month vesting, with 4% unlocked every month (30 epoch)
+> 
+> TEAM category 6 month lock (180 epoch) + 50 month vessting, with 5% unlocked every quarter (180 epoch) 
+
 #### User dApp web page
 
 [https://github.com/Moonlorian/vesting-dapp/tree/main/front.png](https://github.com/Moonlorian/vesting-dapp/blob/main/front.png?raw=true)
@@ -47,6 +53,7 @@ User can see the following balances:
   - Remaining locked tokens
   - Already claimed tokens
   - Unolocked tokens to claim now.
+- Button to claim.
 
 ## 👥 Contributing
 
