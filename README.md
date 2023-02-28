@@ -38,9 +38,9 @@ When you login with the administrator wallet, you can setup the Smart Contract:
 
 > For example:
 > 
-> SEED category 3 month lock (90 epoch) + 25 month vesting, with 4% unlocked every month (30 epoch)
+> SEED category 3 month cliff (lock 90 epoch) + 25 months vesting, with 4% unlocked every month (every 30 epoch)
 > 
-> TEAM category 6 month lock (180 epoch) + 50 month vessting, with 5% unlocked every quarter (180 epoch) 
+> TEAM category 6 month cliff (lock 180 epoch) + 60 months vesting, with 5% unlocked every quarter (every 90 epoch)
 
 #### User dApp web page
 
