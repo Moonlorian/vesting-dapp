@@ -12,19 +12,22 @@ Deploy a new smart contract for each token to apply vesting (see [sc](https://gi
 
 - It will keep safely all the tokens to be distributed during the vesting period.
 
-- It will store all the wallets data and vesting periods for each category.
+- It will store all the wallets and its vesting periods for each category.
  
 ### dApp
 
 Setup the SC and deploy the dApp (see [dapp](https://github.com/Moonlorian/vesting-dapp/tree/main/dapp)).
 
+#### Login
+
+
 #### Administrator dApp web page
 
-.
+When you login with the administrator wallet, you can
 
 #### User dApp web page
 
-.
+User can see the unvested balances to claim and the remaining vested balance.
 
 ## 👥 Contributing
 
