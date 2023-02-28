@@ -20,7 +20,7 @@ Setup the SC and deploy the dApp (see [dapp](https://github.com/Moonlorian/vesti
 
 #### Login
 
-![plot](https://github.com/Moonlorian/vesting-dapp/tree/main/login.png)
+[https://github.com/Moonlorian/vesting-dapp/tree/main/login.png](https://github.com/Moonlorian/vesting-dapp/blob/main/login.png?raw=true)
 
 #### Administrator dApp web page
 
