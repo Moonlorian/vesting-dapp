@@ -25,6 +25,23 @@ npm install
 
 In *config* folder you have the dapp config file (**config.tsx**). Edit this file to configure your dapp. If you have your dapp in mainnet and testnet simultaneously, copy the content of the selected file to **config.tsx** to easy change environment.
 
+Some config fields:
+
+**dAppName** ==> Set Here dapp name. This name will be shown in the header
+**brand** ==> Brand will be shown at footer
+**contractAddress** ==> Place here the erd contract address of your vesting smart contract contract
+**walletConnectV2ProjectId** ==> Generate your own WalletConnect 2 ProjectId here: https://cloud.walletconnect.com/app and set it in this constant
+
+**abi**
+---------------------------------------------
+Use Generated abi file to easier smart contract interaction. This can be removed from dapp creating smart contract constant like this:
+
+```bash
+export const smartContract = new SmartContract({
+  address: new Address(contractAddress)
+});
+```
+
 ### Step 3. Running in development mode
 
 In the project folder run:
