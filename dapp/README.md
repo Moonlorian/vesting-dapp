@@ -1,9 +1,6 @@
-# @multiversx/template-dapp
+# @moonlorian/vesting-dapp
 
-The **MultiversX dApp Template**, built using [React.js](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/).
-It's a basic implementation of [@multiversx/sdk-dapp](https://www.npmjs.com/package/@multiversx/sdk-dapp), providing the basics for MultiversX authentication and TX signing.
-
-See [Dapp template](https://template-dapp.multiversx.com/) for live demo.
+This is the source code of a **Vesting dApp**, built on MultiversX blockchain. Is built using [React.js](https://reactjs.org/) and [Typescript](https://www.typescriptlang.org/).
 
 ## Requirements
 
@@ -26,11 +23,7 @@ npm install
 
 ### Step 2. Update environment
 
-Go to `App.tsx` and edit the `environment` variable according to the environment you want the app to run on.
-Valid values are `testnet`, `devnet` or `mainnet`
-
-If you need to edit the network configuration, you can pass in a `customNetworkConfig` object.
-More info about this can be found in [sdk-dapp documentation](https://github.com/multiversx/sdk-dapp)
+In *config* folder you have the dapp config file (**config.tsx**). Edit this file to configure your dapp. If you have your dapp in mainnet and testnet simultaneously, copy the content of the selected file to **config.tsx** to easy change environment.
 
 ### Step 3. Running in development mode
 
@@ -54,10 +47,6 @@ To build the project run:
 ```bash
 npm run build
 ```
-
-## Roadmap
-
-See the [open issues](https://github.com/multiversx/mx-template-dapp/issues) for a list of proposed features (and known issues).
 
 ## Contributing
 
