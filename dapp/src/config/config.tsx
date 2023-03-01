@@ -5,14 +5,14 @@ import {
   SmartContract,
   Address
 } from '@multiversx/sdk-core';
+
 import json from '../assets/resources/vesting.abi.json';
 
 export const dAppName = "Vesting dashboard";
 export const brand = "Your brand here";
 
 //Smart contract data
-export const contractAddress =
-  "";
+export const contractAddress = "";
 
 const abiRegistry = AbiRegistry.create(json);
 const abi = new SmartContractAbi(abiRegistry);
@@ -27,7 +27,6 @@ export const smartContract = new SmartContract({
 export const walletConnectV2ProjectId = "9b1a9564f91cb659ffe21b73d5c4e2d8";
 
 export const apiTimeout = 6000;
-export const transactionSize = 15;
 export const TOOLS_API_URL = "https://devnet-tools.multiversx.com";
 /**
  * Calls to these domains will use `nativeAuth` Baerer token
