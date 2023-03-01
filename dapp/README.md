@@ -29,12 +29,12 @@ Some config fields:
 
 **dAppName** ==> Set Here dapp name. This name will be shown in the header
 **brand** ==> Brand will be shown at footer
-**contractAddress** ==> Place here the erd contract address of your vesting smart contract contract
+**contractAddress** ==> Place here the erd contract address of your vesting smart contract
 **walletConnectV2ProjectId** ==> Generate your own WalletConnect 2 ProjectId here: https://cloud.walletconnect.com/app and set it in this constant
 
 **abi**
 ---------------------------------------------
-Use Generated abi file to easier smart contract interaction. This can be removed from dapp creating smart contract constant like this:
+Use the generated abi file to facilitate smart contract interaction. This can be removed from dapp creating smart contract constant like this:
 
 ```bash
 export const smartContract = new SmartContract({
