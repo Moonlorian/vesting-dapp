@@ -28,8 +28,11 @@ In *config* folder you have the dapp config file (**config.tsx**). Edit this fil
 Some config fields:
 
 **dAppName** ==> Set Here dapp name. This name will be shown in the header
+
 **brand** ==> Brand will be shown at footer
+
 **contractAddress** ==> Place here the erd contract address of your vesting smart contract
+
 **walletConnectV2ProjectId** ==> Generate your own WalletConnect 2 ProjectId here: https://cloud.walletconnect.com/app and set it in this constant
 
 **abi**
